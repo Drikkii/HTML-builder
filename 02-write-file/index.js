@@ -1,6 +1,5 @@
-const fs = require('fs');
+const fs = require('fs').promises;
 const readline = require('readline');
-const stream = fs.createWriteStream('02-write-file/02-write-file.txt');
 const Path = '02-write-file.txt';
 const rl = readline.createInterface(process.stdin, process.stdout);
 
@@ -9,12 +8,16 @@ rl.setPrompt(
 );
 
 rl.prompt();
-rl.on('line', (inputText) => {
-  if (inputText.toLowerCase() === 'exit') {
+
+rl.prompt();
+
+rl.on('line', async (inputText) => {
+  if (inputText.trim().toLowerCase() === 'exit') {
     console.log('\n' + 'Thank you - all entered text was saved at ' + Path);
     process.exit();
   }
-  fs.appendFileSync('02-write-file/02-write-file.txt', inputText + ' ');
+
+  await fs.appendFile('02-write-file/02-write-file.txt', inputText + ' ');
   rl.prompt();
 });
 
