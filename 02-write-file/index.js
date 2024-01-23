@@ -1,8 +1,8 @@
 const fs = require('fs').promises;
 const readline = require('readline');
-const Path = '02-write-file.txt';
+const Path = '02-write-file/02-write-file.txt';
 const rl = readline.createInterface(process.stdin, process.stdout);
-
+fs.writeFile(Path, '');
 rl.setPrompt(
   `Enter the text you want to save (Ctrl+C to exit or exit to input field): `,
 );
@@ -15,7 +15,7 @@ rl.on('line', async (inputText) => {
     process.exit();
   }
 
-  await fs.appendFile('02-write-file/02-write-file.txt', inputText + ' ');
+  await fs.appendFile('02-write-file/02-write-file.txt', inputText + '\n');
   rl.prompt();
 });
 
