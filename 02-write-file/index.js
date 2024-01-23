@@ -9,8 +9,6 @@ rl.setPrompt(
 
 rl.prompt();
 
-rl.prompt();
-
 rl.on('line', async (inputText) => {
   if (inputText.trim().toLowerCase() === 'exit') {
     console.log('\n' + 'Thank you - all entered text was saved at ' + Path);
